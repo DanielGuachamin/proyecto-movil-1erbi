@@ -7,11 +7,42 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <form [formGroup]="userForm" (ngSubmit)="registerUser()" novalidate>
+    <div class="mb-3">
+      <label class="form-label">Correo</label>
+      <input formControlName="mail" type="email" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Contraseña</label>
+      <input formControlName="password" type="password" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Nombre</label>
+      <input formControlName="name" type="text" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Fecha de nacimiento</label>
+      <input formControlName="birthdate" type="date" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <p>Seleccionar rol</p>
+      
+    </div>
+    <div class="mb-3">
+      <button (click)="turista()" class="btn btn-primary button" type="button">Turista</button>
+      
+    </div>
+    <div class="mb-3">
+      
+      <button (click)="encargado()" class="btn btn-primary button" type="button">Encargado de local</button>
+    </div>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+    <br>
+
+    
+    
+    <button [disabled]="!userForm.valid" type="submit" class="btn btn-primary button" >Registrar</button>
+        
+    
+</form>
 </ion-content>

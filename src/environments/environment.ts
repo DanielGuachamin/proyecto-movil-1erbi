@@ -3,16 +3,14 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  firebase: {
-    projectId: 'proyecto-appmovil-2022a',
-    appId: '1:728856571351:web:9f27f9d6f0aad93cb4ef92',
-    databaseURL: 'https://proyecto-appmovil-2022a-default-rtdb.firebaseio.com',
-    storageBucket: 'proyecto-appmovil-2022a.appspot.com',
-    locationId: 'us-central',
-    apiKey: 'AIzaSyBR_ywbrLfiRroZTvN37-omPgpHzIimS10',
-    authDomain: 'proyecto-appmovil-2022a.firebaseapp.com',
-    messagingSenderId: '728856571351',
-    measurementId: 'G-ZDSSPBYMC3',
+  firebaseConfig: {
+    apiKey: "AIzaSyCHG-vQN1R6m5PQMmMWpuM6Atqyl3KeJo8",
+    authDomain: "appweb-bcd38.firebaseapp.com",
+    databaseURL: "https://appweb-bcd38-default-rtdb.firebaseio.com",
+    projectId: "appweb-bcd38",
+    storageBucket: "appweb-bcd38.appspot.com",
+    messagingSenderId: "267983699764",
+    appId: "1:267983699764:web:90cdbf12ded0ccf0086f61"
   },
   production: false
 };
