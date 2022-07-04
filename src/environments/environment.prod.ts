@@ -1,14 +1,12 @@
 export const environment = {
   firebase: {
-    projectId: 'proyecto-appmovil-2022a',
-    appId: '1:728856571351:web:9f27f9d6f0aad93cb4ef92',
-    databaseURL: 'https://proyecto-appmovil-2022a-default-rtdb.firebaseio.com',
-    storageBucket: 'proyecto-appmovil-2022a.appspot.com',
+    projectId: 'ionicimagen-358b2',
+    appId: '1:15695187033:web:16c4223e911597d9573548',
+    storageBucket: 'ionicimagen-358b2.appspot.com',
     locationId: 'us-central',
-    apiKey: 'AIzaSyBR_ywbrLfiRroZTvN37-omPgpHzIimS10',
-    authDomain: 'proyecto-appmovil-2022a.firebaseapp.com',
-    messagingSenderId: '728856571351',
-    measurementId: 'G-ZDSSPBYMC3',
+    apiKey: 'AIzaSyCRwkLG7eBEkZJKa-1YnACLWKMb3frlu10',
+    authDomain: 'ionicimagen-358b2.firebaseapp.com',
+    messagingSenderId: '15695187033',
   },
   production: true
 };

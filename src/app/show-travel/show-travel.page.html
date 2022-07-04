@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Lugares Turisticos del  Ecuador 2022</ion-title>
+    <br>
+    <br>
+    <br>
+    <ion-button color="primary" fill="outline" size="small"  class="button" [routerLink]="['/geolocalizacion']">Crear nuevos Lugares Turisticos
+    </ion-button>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor=" let lugares of todosloslugaresTuristicos">
+    <ion-card-header>
+      <h3>{{lugares.Lugar}}-Ecuador</h3>
+      <ion-avatar class="avatar">
+        <img  [src]="lugares.Imagen"  />
+       
+      </ion-avatar>
+      <ion-card-title>{{lugares.Nombre}}</ion-card-title>
+    </ion-card-header>
+    <ion-button color="primary" fill="outline" size="small"  class="button" routerLink="/detalles-Lugares-Turisticos/{{lugares.id}}">Detalles
+    </ion-button>
+ 
+
+  </ion-card>
+
+</ion-content>
