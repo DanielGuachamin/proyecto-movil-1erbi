@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { Auth, getAuth, onAuthStateChanged } from "@angular/fire/auth";
 import { AngularFireAuth } from "@angular/fire/compat/auth";
 import { AngularFirestore } from "@angular/fire/compat/firestore";
 import { Router } from "@angular/router";
@@ -10,6 +11,7 @@ export class FireserviceService {
   constructor(
     public firestore: AngularFirestore,
     public auth: AngularFireAuth,
+    public authService: Auth,
     public router: Router
   ) {}
 
@@ -24,9 +26,11 @@ export class FireserviceService {
   saveDetails(data: any) {
     return this.firestore.collection("users").doc(data.uid).set(data);
   }
+
   getDetails(data: any) {
     return this.firestore.collection("users").doc(data.uid).valueChanges();
   }
+
   logout(){
     this.auth.signOut().then(()=>{
       //deshabilitar el token

@@ -1,0 +1,38 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="background-image"></div>
+
+  <div id="header">
+    <h1 id="name">Modifica tu perfil</h1>
+  </div>
+
+  <form [formGroup]="profileForm" (ngSubmit)="modifiedProfile()" novalidate>
+    <ion-item>
+      <ion-label position="stacked">Name</ion-label>
+      <ion-input formControlName="name" type="text" class="form-control"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Email</ion-label>
+      <ion-input formControlName="mail" type="email" class="form-control"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Rol</ion-label>
+      <ion-input formControlName="rol" type="text" class="form-control"></ion-input>
+    </ion-item>
+  
+
+    <!-- <ion-item *ngFor="let name of people; let i=index">
+      <ion-label (ionSelect)="setPerson($event)">{{name.name}}</ion-label>
+      <ion-radio (ionSelect)="setPerson($event)" value="{{name.value}}">
+      </ion-radio>
+    </ion-item> -->
+    <ion-button expand='block' color="secondary">Modificar perfil</ion-button>
+  </form>
+</ion-content>

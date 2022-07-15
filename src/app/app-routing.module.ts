@@ -34,6 +34,10 @@ const routes: Routes = [
     path: 'geolocalizacion',
     loadChildren: () => import('./geolocalizacion/geolocalizacion.module').then( m => m.GeolocalizacionPageModule)
   },
+  {
+    path: 'profile',
+    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
+  },
 
 
 ];

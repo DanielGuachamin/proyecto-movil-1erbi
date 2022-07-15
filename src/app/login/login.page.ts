@@ -62,7 +62,6 @@ export class LoginPage implements OnInit {
       }
     },err=>{
       alert(err.message)
-      console.log('esto es un error no sea cojudo', err);
     })
   }
 

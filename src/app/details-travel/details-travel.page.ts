@@ -3,9 +3,6 @@ import { FormBuilder ,FormGroup} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LugaresTuristicos } from '../show-travel/lugaresTuristicos.modal';
 import { ServDetailsService } from './serv-details.service';
-import { map } from '@firebase/util';
-import { Console } from 'console';
-import { Geolocation } from '@capacitor/geolocation';
 declare var google;
 @Component({
   selector: 'app-details-travel',

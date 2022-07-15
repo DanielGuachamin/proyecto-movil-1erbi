@@ -13,9 +13,14 @@ export class TuristaPage implements OnInit {
 
   ngOnInit() {
   }
+
   logout(){
     this.fireService.logout();
     this.router.navigateByUrl('');
+  }
+
+  goToProfile(){
+    this.router.navigate[('/profile')]
   }
 
 }
