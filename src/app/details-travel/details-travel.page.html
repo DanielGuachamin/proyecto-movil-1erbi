@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Detalles de Lugares Turisticos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<form [formGroup]="datallesForm">
+<ion-img [src]="this.url" class="imagen_lugar"></ion-img>
+  
+<!---->
+<ion-accordion-group>
+  <ion-accordion value="first">
+    <ion-item slot="header" color="light">
+      <ion-label>Nombre del Local</ion-label>
+    </ion-item>
+    <div class="ion-padding" slot="content">
+      <input formControlName="Nombre" type="text" class="form-control"  required [readonly]="true" > 
+    </div>
+  </ion-accordion>
+  <ion-accordion value="second">
+    <ion-item slot="header" color="light">
+      <ion-label>Nombre del Dueño del local</ion-label>
+    </ion-item>
+    <div class="ion-padding" slot="content">
+      <input formControlName="Propietario" type="text" class="form-control"  required [readonly]="true" > 
+    </div>
+  </ion-accordion>
+  <ion-accordion value="third">
+    <ion-item slot="header" color="light">
+      <ion-label>Cuidad </ion-label>
+    </ion-item>
+    <div class="ion-padding" slot="content">
+      <input formControlName="Lugar" type="text" class="form-control"  required [readonly]="true" >  
+    </div>
+  </ion-accordion>
+
+  <ion-accordion value="fourth">
+    <ion-item slot="header" color="light">
+      <ion-label>Detalles del Local</ion-label>
+    </ion-item>
+    <div class="ion-padding" slot="content">
+      <textarea class="form-control" rows="3" formControlName="Detalles" required [readonly]="true"></textarea>
+
+     
+    </div>
+  </ion-accordion>
+  
+  <ion-accordion value="fiveth">
+    <ion-item slot="header" color="light">
+      <ion-label (click)="obtenerCoordenadas(this.lat,this.long)">Direccion en Google</ion-label>
+    </ion-item>
+    <div class="ion-padding" slot="content">
+      <!-- <iframe src="https://www.google.com/maps?q=-0.0022568,-78.4580114" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
+      <a target="_blank" href="https://www.google.es/maps?q={{this.lat}},{{this.long}}"> Ve a la ubicación deseada</a>
+    </div>
+  </ion-accordion>
+</ion-accordion-group>
+</form>
+<!-- https://www.google.es/maps?q=-0.0022568,-78.4580114 -->
+
+</ion-content>

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "proyecto-appmovil-2022a": {
+      "hosting": {
+        "app": [
+          "proyecto-appmovil-2022a"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "proyecto-appmovil-2022a"
+  }
+}

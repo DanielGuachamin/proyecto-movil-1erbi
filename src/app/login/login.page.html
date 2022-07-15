@@ -1,0 +1,36 @@
+<ion-header class="ion-no-border">
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="background-image"></div>
+
+  <div id="header">
+    <h1 id="name">Patito travel </h1>
+    <img src="../../assets/pollito.png" alt="logo">
+  </div>
+
+  <form [formGroup]="userForm" (ngSubmit)="login()" novalidate>
+
+    <div id="form">
+
+      <ion-item>
+        <ion-label position="stacked">Email</ion-label>
+        <ion-input formControlName="mail" type="email" class="form-control"></ion-input>
+      </ion-item>
+      <br>
+
+      <ion-item>
+        <ion-label position="stacked">Password</ion-label>
+        <ion-input formControlName="password" type="password" class="form-control"></ion-input>
+      </ion-item>
+
+      <ion-button (click)='login()' expand='block'>Login</ion-button>
+      <br>
+
+      <h5 (click)='signup()' >Don't have account? <ion-text color='secondary'>signup here</ion-text>
+      </h5>
+
+    </div>
+  </form>
+
+</ion-content>
