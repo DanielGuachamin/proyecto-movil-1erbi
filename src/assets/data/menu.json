@@ -1,0 +1,32 @@
+[
+    {
+        "icon": "information-circle",
+        "name": "Turista",
+        "redirectTo": "/inicio",
+        "rol": ""
+    },
+    {
+        "icon": "car-sport",
+        "name": "sitios turisticos",
+        "redirectTo": "/sitios-turisticos",
+        "rol": ""
+    },
+    {
+        "icon": "clipboard",
+        "name": "añadir sitio",
+        "redirectTo": "/sitios-turisticos",
+        "rol": ""
+    },
+    {
+        "icon": "bar-chart",
+        "name": "gestionar sitios",
+        "redirectTo": "/sitios-turisticos",
+        "rol": ""
+    },
+    {
+        "icon": "person-circle",
+        "name": "perfil",
+        "redirectTo": "/sitios-turisticos",
+        "rol": ""
+    }
+]

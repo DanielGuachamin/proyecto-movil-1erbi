@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FireserviceService } from '../fireservice.service';
+import { FireserviceService } from 'src/app/services/fireservice.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
@@ -13,6 +13,7 @@ export class LoginPage implements OnInit {
   public password:any;
   public usuario: any;
   public userForm: FormGroup;
+  public var;
 
   constructor(
     public formBuilder: FormBuilder,
@@ -26,6 +27,7 @@ export class LoginPage implements OnInit {
    }
 
   ngOnInit() {
+    localStorage.clear();
   }
 
 
@@ -37,18 +39,21 @@ export class LoginPage implements OnInit {
         this.fireService.getDetails({uid:res.user.uid}).subscribe(res=>{
           console.log(res);
           this.usuario= res;
+          localStorage.setItem("idUser", this.usuario.uid);
+          this.var = localStorage.getItem("idUser");
+          console.log('en storage: ', this.usuario.rol)
           //alert('Welcome '+ res['name']);
           switch(this.usuario.rol) { 
             case "administrador": { 
-              this.router.navigateByUrl(`admin/${this.usuario.uid}`)
+              this.router.navigate(["/admin/{{idUser}}"]);
                break; 
             } 
             case "turista": { 
-              this.router.navigateByUrl(`turista/${this.usuario.uid}`)
+              this.router.navigate(["/turista/{{idUser}}"]);
                break; 
             } 
             case "encargado": { 
-              this.router.navigateByUrl(`encargado/${this.usuario.uid}`)
+              this.router.navigate(["/encargado/{{idUser}}"]);
               break; 
            }
             default: { 

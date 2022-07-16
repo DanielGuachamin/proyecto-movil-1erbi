@@ -8,6 +8,9 @@ import { Geolocation } from '@capacitor/geolocation';
   providedIn: 'root'
 })
 export class ServGeoService {
+
+  public userId: string;
+
   speakerCollection: AngularFirestoreCollection<IngresatlugaresTuristicos>;
   constructor(private angularfirestore :AngularFirestore,private storage:AngularFirestore) {
     this.speakerCollection = angularfirestore.collection("SitiosTuristicosEcuador");
@@ -102,7 +105,9 @@ export class ServGeoService {
   this.longitud=obtenerCoordenadas.coords.longitude;
       
       const  id = this.angularfirestore.createId(); 
-      return await this.angularfirestore.collection('SitiosTuristicosEcuador').doc(id).set({id,
+      this.userId = localStorage.getItem("idUser");
+      const idItem = this.userId
+      return await this.angularfirestore.collection('SitiosTuristicosEcuador').doc(id).set({idItem,
         Detalles:turismo.Detalles,
         Imagen:turismo.Imagen,
         Lugar:turismo.Lugar,

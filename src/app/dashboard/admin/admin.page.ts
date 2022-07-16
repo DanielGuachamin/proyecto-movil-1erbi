@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FireserviceService } from 'src/app/fireservice.service';
+import { MenuController } from '@ionic/angular';
+import { FireserviceService } from 'src/app/services/fireservice.service';
 
 @Component({
   selector: 'app-admin',
@@ -9,12 +10,16 @@ import { FireserviceService } from 'src/app/fireservice.service';
 })
 export class AdminPage implements OnInit {
 
-  constructor(public fireService:FireserviceService, public router:Router) { }
+  constructor(public fireService:FireserviceService, public router:Router, private menuController:MenuController) { }
 
   ngOnInit() {
   }
 
-  logout(){
+  toggleMenu() {
+    this.menuController.toggle();
+  }
+
+  logout() {
     this.fireService.logout();
     this.router.navigateByUrl('');
   }

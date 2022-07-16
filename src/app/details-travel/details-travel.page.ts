@@ -65,6 +65,10 @@ export class DetailsTravelPage implements OnInit {
     });
   }
 
+  returnToShow(){
+    this.router.navigate(['Lugares-Turisticos-Ecuador'])
+  }
+
 
   //geolocalizacion
   async obtenerCoordenadas(uno,dos){

@@ -1,9 +1,25 @@
+<app-menu>
+  
+</app-menu>
 <ion-header>
   <ion-toolbar>
-    <ion-title>admin</ion-title>
+    <ion-buttons>
+      <ion-menu-button color="primary" menu="first">
+
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Vista de Admin
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-button (click)='logout()' expand='block'>Salir</ion-button>
+  
 </ion-content>
+<ion-footer>
+  <ion-buttons>
+    <ion-button (click)='logout()' expand='block'>Cerrar Sesión</ion-button>
+    <ion-button  expand='block' [routerLink]="['/profile']">Modificar Perfil</ion-button>
+  </ion-buttons>
+</ion-footer>

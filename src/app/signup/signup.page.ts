@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FireserviceService } from '../fireservice.service';
+import { FireserviceService } from 'src/app/services/fireservice.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({

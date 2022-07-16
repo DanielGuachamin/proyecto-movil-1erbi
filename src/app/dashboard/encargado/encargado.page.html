@@ -1,9 +1,33 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>encargado</ion-title>
+    <ion-title>Gestiona tus lugares turísticos</ion-title>
+    <br>
+    <br>
+    <br>
+    <ion-button color="primary" fill="outline" size="small"  class="button" [routerLink]="['/geolocalizacion']">Crear nuevos Lugares Turisticos
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-button (click)='logout()' expand='block'>Salir</ion-button>
+  <ion-card *ngFor=" let lugares of todosloslugaresTuristicos">
+    <ion-card-header>
+      <h3>{{lugares.Lugar}}-Ecuador</h3>
+      <ion-avatar class="avatar">
+        <img  [src]="lugares.Imagen"  />
+       
+      </ion-avatar>
+      <ion-card-title>{{lugares.Nombre}}</ion-card-title>
+    </ion-card-header>
+    <ion-button color="primary" fill="outline" size="small"  class="button" routerLink="/detalles-Lugares-Turisticos/{{lugares.id}}">Detalles
+    </ion-button>
+  </ion-card>
 </ion-content>
+
+<ion-footer>
+  <ion-buttons>
+    <ion-button (click)='logout()' expand='block' [routerLink]="['/login']">Cerrar Sesión</ion-button>
+    <ion-button  expand='block' [routerLink]="['/profile']">Modificar Perfil</ion-button>
+  </ion-buttons>
+</ion-footer>
+

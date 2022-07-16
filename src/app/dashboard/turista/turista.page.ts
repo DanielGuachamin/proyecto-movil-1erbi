@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FireserviceService } from 'src/app/fireservice.service';
+import { MenuController } from '@ionic/angular';
+import { FireserviceService } from 'src/app/services/fireservice.service';
 
 @Component({
   selector: 'app-turista',
@@ -8,19 +9,25 @@ import { FireserviceService } from 'src/app/fireservice.service';
   styleUrls: ['./turista.page.scss'],
 })
 export class TuristaPage implements OnInit {
+  constructor(
+    public fireService: FireserviceService,
+    public router: Router,
+    // private menuController: MenuController
+  ) {}
 
-  constructor(public fireService:FireserviceService, public router:Router,) { }
+  ngOnInit() {}
 
-  ngOnInit() {
-  }
-
-  logout(){
+  
+  logout() {
     this.fireService.logout();
-    this.router.navigateByUrl('');
+    localStorage.clear();
   }
 
-  goToProfile(){
-    this.router.navigate[('/profile')]
-  }
-
+  // toggleMenu() {
+  //   this.menuController.toggle();
+  // }
+  
+  // goToProfile() {
+  //   this.router.navigate['/profile'];
+  // }
 }

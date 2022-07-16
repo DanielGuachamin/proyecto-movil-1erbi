@@ -1,17 +1,12 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Vista Turista</ion-title>
-  </ion-toolbar>
-</ion-header>
+
 
 <ion-content>
-
-  
+  <app-show-travel></app-show-travel>
 </ion-content>
 
 <ion-footer>
   <ion-buttons>
-    <ion-button (click)='logout()' expand='block'>Cerrar Sesión</ion-button>
-    <ion-button (click)='goToProfile()' expand='block'>Cerrar Sesión</ion-button>
+    <ion-button (click)='logout()' expand='block' [routerLink]="['/login']">Cerrar Sesión</ion-button>
+    <ion-button  expand='block' [routerLink]="['/profile']">Modificar Perfil</ion-button>
   </ion-buttons>
 </ion-footer>

@@ -23,6 +23,7 @@ export class GeolocalizacionPage implements OnInit {
   latitudPublica: number = 0;
   longitudPublica: number = 0;
   imagenes:ImagenesTurista[]=[];
+  public usuario: string;
   imgURL="https://images.pexels.com/photos/7403878/pexels-photo-7403878.jpeg?auto=compress&cs=tinysrgb&w=600";
   file:any;
 // para ingresar los lugares 
@@ -64,6 +65,8 @@ public LugaresTuristicosForm:FormGroup;
    }
   
   ngOnInit() {
+    this.usuario = localStorage.getItem("idUser")
+    console.log('usuario uid: ', this.usuario)
   }
 // enviar los lugares turisticos
   onSubmit() {

@@ -14,10 +14,12 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { provideStorage, getStorage } from '@angular/fire/storage';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserModule,
