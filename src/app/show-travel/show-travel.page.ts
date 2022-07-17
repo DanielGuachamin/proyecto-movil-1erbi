@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { FireserviceService } from '../services/fireservice.service';
 
@@ -17,7 +18,8 @@ export class ShowTravelPage implements OnInit {
   constructor(
     private router: Router,
     private ServicioTuristico: ServiceTuriscoService,
-    private fireService: FireserviceService
+    private fireService: FireserviceService,
+    public afAuth :AngularFireAuth
   ) {}
 
   ngOnInit() {
@@ -34,8 +36,9 @@ export class ShowTravelPage implements OnInit {
     });
   }
 
-  logout() {
+  async logout() {
     this.fireService.logout();
     localStorage.clear();
+    await this.afAuth.signOut();
   }
 }

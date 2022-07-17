@@ -1,25 +1,38 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+import {
+  AngularFirestore,
+  AngularFirestoreCollection,
+} from '@angular/fire/compat/firestore';
 import { ImagenesTurista } from './Imagenes.modal';
 import { IngresatlugaresTuristicos } from './IngresarTurista.model';
-import { getStorage, ref, uploadBytesResumable, getDownloadURL, deleteObject } from '@angular/fire/storage';
+import {
+  getStorage,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+  deleteObject,
+} from '@angular/fire/storage';
 import { Geolocation } from '@capacitor/geolocation';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ServGeoService {
-
   public userId: string;
 
   speakerCollection: AngularFirestoreCollection<IngresatlugaresTuristicos>;
-  constructor(private angularfirestore :AngularFirestore,private storage:AngularFirestore) {
-    this.speakerCollection = angularfirestore.collection("SitiosTuristicosEcuador");
-   }
-   private CarpetaImagenes = "imagenLugaresTuristicos";
+  constructor(
+    private angularfirestore: AngularFirestore,
+    private storage: AngularFirestore
+  ) {
+    this.speakerCollection = angularfirestore.collection(
+      'SitiosTuristicosEcuador'
+    );
+  }
+  private CarpetaImagenes = 'imagenLugaresTuristicos';
 
-   // crear un nuevo perfil
-   latitud:number;
-  longitud:number;
+  // crear un nuevo perfil
+  latitud: number;
+  longitud: number;
   /*
   createPost(DatosTuris:IngresatlugaresTuristicos){
     return new Promise<any>((resolve,reject) =>{
@@ -35,96 +48,93 @@ export class ServGeoService {
 */
 
   // cargar imagene
-  
 
-  cargarimagenesGeneroFirebase(imagenes: ImagenesTurista[], lugarTuris: IngresatlugaresTuristicos) {
+  cargarimagenesGeneroFirebase(
+    imagenes: ImagenesTurista[],
+    lugarTuris: IngresatlugaresTuristicos
+  ) {
+    if(imagenes.length==0){
+      alert('error no hay imagen')
+    }else{
+      alert('imagen esta bien')
+    }
     const storage = getStorage();
     for (const item of imagenes) {
-     
-      
       // para que la imagen se guarde con el nombre del generos y si hay espacio se unan y no halla problemas
-     
-      const path=`${this.CarpetaImagenes}/${lugarTuris.Nombre}/${lugarTuris.Propietario}`;      
+
+      const path = `${this.CarpetaImagenes}/${lugarTuris.Nombre}/${lugarTuris.Propietario}`;
       const storageResf = ref(storage, path);
       // a cargar la imagen
       const uploadImg = uploadBytesResumable(storageResf, item.imagen);
-      uploadImg.on('state_changed', (snapshot) => {
-        const imagenn = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      uploadImg.on(
+        'state_changed',
+        (snapshot) => {
+          const imagenn =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        },
+        (error) => {
+          alert('error_imagen');
+        },
+        () => {
+          //obtener la url
+          getDownloadURL(uploadImg.snapshot.ref).then((downloadURL) => {
+            item.url = downloadURL;
 
-      }, (error) => {
-        console.log('error_imagen', error)
+            const id = this.angularfirestore.createId();
+            this.guadarImagenGeneros({
+              // aqui estan los datos que se enviar a la base de datos con la imagen
 
-      }, () => {
-        //obtener la url
-        getDownloadURL(uploadImg.snapshot.ref).then((downloadURL) => {
-         
-          item.url = downloadURL;
-       
-         
-         
-             
-             
-           const  id = this.angularfirestore.createId(); 
-          this.guadarImagenGeneros({
-// aqui estan los datos que se enviar a la base de datos con la imagen
-   
-            Detalles:lugarTuris.Detalles,
-            Imagen: item.url,
-          
-            id:id,
-            Lugar:lugarTuris.Lugar,
-            Nombre:lugarTuris.Nombre,
-            Propietario:lugarTuris.Propietario
+              Detalles: lugarTuris.Detalles,
+              Imagen: item.url,
 
-           
-           
-            
-
-          } )
-          console.log('imagen', item.url)
-          
-        })
-
-      })
-
+              id: id,
+              Lugar: lugarTuris.Lugar,
+              Nombre: lugarTuris.Nombre,
+              Propietario: lugarTuris.Propietario,
+            });
+            alert('imagen'+ item.url);
+          });
+        }
+      );
     }
-
-
   }
 
   // guardar la imagen
-      
-  async guadarImagenGeneros(turismo: { Detalles: string, Imagen: string, Lugar: string,Nombre:string,id:string,Propietario:string,}): Promise<any> {
-  
-    try {
 
+  async guadarImagenGeneros(turismo: {
+    Detalles: string;
+    Imagen: string;
+    Lugar: string;
+    Nombre: string;
+    id: string;
+    Propietario: string;
+  }): Promise<any> {
+    try {
       //
       const obtenerCoordenadas = await Geolocation.getCurrentPosition();
- //console.log('luagres',this.LugaresTuristicosForm.value)
-  this.latitud=obtenerCoordenadas.coords.latitude;
-  this.longitud=obtenerCoordenadas.coords.longitude;
-      
-      const  id = this.angularfirestore.createId(); 
-      this.userId = localStorage.getItem("idUser");
-      const idItem = this.userId
-      return await this.angularfirestore.collection('SitiosTuristicosEcuador').doc(id).set({idItem,
-        Detalles:turismo.Detalles,
-        Imagen:turismo.Imagen,
-        Lugar:turismo.Lugar,
-        Nombre:turismo.Nombre,
-        Propietario:turismo.Propietario,
-        Latitud:this.latitud,
-        Longitud:this.longitud
-          
-      });
-  
+      //alert.log('luagres',this.LugaresTuristicosForm.value)
+      this.latitud = obtenerCoordenadas.coords.latitude;
+      this.longitud = obtenerCoordenadas.coords.longitude;
+
+      const id = this.angularfirestore.createId();
+      this.userId = localStorage.getItem('idUser');
+      const idItem = this.userId;
+      return await this.angularfirestore
+        .collection('SitiosTuristicosEcuador')
+        .doc(id)
+        .set({
+          idItem,
+          Detalles: turismo.Detalles,
+          Imagen: turismo.Imagen,
+          Lugar: turismo.Lugar,
+          Nombre: turismo.Nombre,
+          Propietario: turismo.Propietario,
+          Latitud: this.latitud,
+          Longitud: this.longitud,
+        });
     } catch (error) {
-      console.log('error al guadar imagen', error)
-
+      alert('error al guadar imagen' + error);
+      alert('Error algo va con la imagen');
     }
-
   }
-
 }
-
-

@@ -1,4 +1,5 @@
 import { Component, NgZone, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AlertController } from '@ionic/angular';
 import { FireserviceService } from 'src/app/services/fireservice.service';
 import { LugaresTuristicos } from 'src/app/show-travel/lugaresTuristicos.modal';
@@ -18,6 +19,7 @@ export class AdminPage implements OnInit {
     private fireService: FireserviceService,
     private alertController: AlertController,
     private zone: NgZone,
+    public afAuth :AngularFireAuth
   ) {}
 
   ngOnInit() {
@@ -59,9 +61,10 @@ export class AdminPage implements OnInit {
     await alert.present();
   }
 
-  logout() {
+  async logout() {
     this.fireService.logout();
     localStorage.clear();
+    await this.afAuth.signOut();
   }
 
   reloadPage() {

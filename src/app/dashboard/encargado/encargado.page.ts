@@ -1,4 +1,5 @@
 import { Component, NgZone, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router} from '@angular/router';
 import { FireserviceService } from 'src/app/services/fireservice.service';
 import { LugaresTuristicos } from 'src/app/show-travel/lugaresTuristicos.modal';
@@ -18,7 +19,8 @@ export class EncargadoPage implements OnInit {
     public fireService: FireserviceService,
     public router: Router,
     private encargadoService: EncargadoService,
-    private zone: NgZone
+    private zone: NgZone,
+    public afAuth :AngularFireAuth
   ) {}
 
   ngOnInit() {
@@ -39,9 +41,10 @@ export class EncargadoPage implements OnInit {
   //   this.menuController.toggle();
   // }
 
-  logout() {
+  async logout() {
     this.fireService.logout();
     localStorage.clear();
+    await this.afAuth.signOut();
   }
 
   reloadPage() {

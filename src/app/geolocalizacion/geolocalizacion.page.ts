@@ -75,9 +75,6 @@ public LugaresTuristicosForm:FormGroup;
       Lugar:this.LugaresTuristicosForm.value.Lugar,
       Nombre:this.LugaresTuristicosForm.value.Nombre,
       Propietario:this.LugaresTuristicosForm.value.Propietario
-     
-      
-
     };
     this.geolocalizacion.cargarimagenesGeneroFirebase(this.imagenes,cargar);
      console.log('cargar',cargar)
