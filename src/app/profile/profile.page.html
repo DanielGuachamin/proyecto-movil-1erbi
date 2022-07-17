@@ -28,24 +28,7 @@
       Correo: {{mail}}
     </ion-card-content>
     <ion-button expand='block' color="secondary" [routerLink]="['/useredit',uid]">Modificar perfil</ion-button>
+    <ion-button expand='block' color="primary" (click)="dashboard()">Dashboard</ion-button>
+    
   </ion-card>
-
-  <!-- <form [formGroup]="profileForm" (ngSubmit)="modifiedProfile()" novalidate>
-    <ion-item>
-      <ion-label position="stacked">Name</ion-label>
-      <ion-input formControlName="name" type="text" class="form-control"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked" disabled>Email</ion-label>
-      <ion-input formControlName="mail" type="email" class="form-control"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Rol</ion-label>
-      <ion-input formControlName="rol" type="text" class="form-control"></ion-input>
-    </ion-item>
-  
-
-
-    <ion-button expand='block' color="secondary">Modificar perfil</ion-button>
-  </form> -->
 </ion-content>

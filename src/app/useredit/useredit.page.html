@@ -11,12 +11,13 @@
 
 <ion-content class="ion-padding">
 
-  <form [formGroup]="profileForm" (ngSubmit)="modifiedProfile()" novalidate>
+  <form [formGroup]="profileForm">
     <ion-item>
       <ion-label position="stacked">Name</ion-label>
       <ion-input formControlName="name" type="text" class="form-control"></ion-input>
     </ion-item>
-  
-    <ion-button expand='block' color="secondary">Guardar</ion-button>
+
+    <ion-button expand='block' color="secondary" (click)="modifiedProfile()" [routerLink]="['/profile',uid]">Guardar
+    </ion-button>
   </form>
 </ion-content>

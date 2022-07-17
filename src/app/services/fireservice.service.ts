@@ -35,8 +35,10 @@ export class FireserviceService {
     return this.firestore.collection("users").doc(uid).valueChanges();
   }
 
-  updateProfile(name:string) {
-    const uid = localStorage.getItem('userId')
+  updateProfile(uid:string, name:string) {
+    console.log('esta parte antes del update funca')
+    console.log('uid en servicio: ', uid)
+    console.log('name de servicio: ', name)
     return this.firestore.collection("users").doc(uid).update({
       name: name
     });

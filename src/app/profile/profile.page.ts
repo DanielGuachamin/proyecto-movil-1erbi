@@ -23,6 +23,8 @@ export class ProfilePage implements OnInit {
   public urlImg:string;
   public uid:string;
 
+  public redirect:string;
+
   constructor(
     public formBuilder: FormBuilder,
     public router: Router,
@@ -53,12 +55,28 @@ export class ProfilePage implements OnInit {
       this.mail = this.usuario.mail;
       this.urlImg = this.usuario.imageURL
     })
+    
   }
 
-
-
-  modifiedProfile(){
-
+  dashboard(){
+    switch(this.usuario.rol) { 
+      case "turista": { 
+        this.router.navigate(['/turista', localStorage.getItem("idUser")])
+         break; 
+      } 
+      case "encargado": { 
+        this.router.navigate(['/encargado', localStorage.getItem("idUser")])
+         break; 
+      } 
+      case "administrador": { 
+        this.router.navigate(['/admin', localStorage.getItem("idUser")])
+        break; 
+     }
+      default: { 
+         alert("revisa que el usuario tenga rol")
+         break; 
+      } 
+   }
   }
 
 }

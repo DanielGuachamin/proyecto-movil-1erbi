@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { FireserviceService } from '../services/fireservice.service';
 
 @Component({
@@ -14,28 +15,29 @@ export class UsereditPage implements OnInit {
   public name:string;
   profileForm: FormGroup;
 
-  constructor(private fireService: FireserviceService) {
+  constructor(private fireService: FireserviceService, private router: Router) {
     this.profileForm = new FormGroup({
       name: new FormControl('')
     })
   }
 
   ngOnInit() {
-    this.uid = localStorage.getItem('userId')
-    this.fireService.getUserInfo(this.uid).subscribe(response => {
-      
+    const uid = localStorage.getItem("idUser")
+    this.uid = uid
+    this.fireService.getUserInfo(uid).subscribe(response => {
       this.user = response;
       console.log('formulario de editar: ', response);
-      this.profileForm.reset(this.user)
+      this.profileForm.reset(response)
      
     })
   }
 
   modifiedProfile(){
     const name = this.profileForm.get('name').value
-    const uid = localStorage.getItem('userId')
+    const uid = localStorage.getItem('idUser')
     console.log('name de form: ', name)
-    this.fireService.updateProfile(name)
+    this.fireService.updateProfile(uid, name)
+    this.router.navigate[('profile/'+uid)]
   }
 
 }

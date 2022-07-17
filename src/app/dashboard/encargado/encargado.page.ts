@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 import { Router} from '@angular/router';
 import { FireserviceService } from 'src/app/services/fireservice.service';
 import { LugaresTuristicos } from 'src/app/show-travel/lugaresTuristicos.modal';
@@ -17,10 +17,12 @@ export class EncargadoPage implements OnInit {
   constructor(
     public fireService: FireserviceService,
     public router: Router,
-    private encargadoService: EncargadoService
+    private encargadoService: EncargadoService,
+    private zone: NgZone
   ) {}
 
   ngOnInit() {
+    this.recargaProcess();
     this.encargadoService.getPostEncargados().subscribe((res) => {
       this.todosloslugaresTuristicos = res.map((e) => {
         return {
@@ -41,4 +43,22 @@ export class EncargadoPage implements OnInit {
     this.fireService.logout();
     localStorage.clear();
   }
+
+  reloadPage() {
+    // click handler or similar
+    this.zone.runOutsideAngular(() => {
+      location.reload();
+    });
+  }
+
+  recargaProcess() {
+    if (localStorage.getItem('recarga') === 'true') {
+      console.log('recarga');
+      localStorage.setItem('recarga', '');
+      this.reloadPage();
+    } else {
+      console.log('no recarga');
+    }
+  }
 }
+

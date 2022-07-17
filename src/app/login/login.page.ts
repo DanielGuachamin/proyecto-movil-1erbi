@@ -28,10 +28,12 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
     localStorage.clear();
+    localStorage.setItem("recarga", "true");
   }
 
 
   login(){
+    
     this.fireService.loginWithEmail(this.userForm.value).then(res=>{
       console.log(res);
       

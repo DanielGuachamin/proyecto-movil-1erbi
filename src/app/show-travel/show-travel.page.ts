@@ -12,6 +12,7 @@ import { ServiceTuriscoService } from './service-turisco.service';
 })
 export class ShowTravelPage implements OnInit {
   // los datos que tiene el array
+  uidUser:string;
   todosloslugaresTuristicos: LugaresTuristicos[];
   constructor(
     private router: Router,
@@ -21,6 +22,7 @@ export class ShowTravelPage implements OnInit {
 
   ngOnInit() {
     //traer todos los datos
+    this.uidUser = localStorage.getItem('idUser')
     this.ServicioTuristico.obtenerLugaresTurisicos().subscribe((res) => {
       this.todosloslugaresTuristicos = res.map((e) => {
         return {
