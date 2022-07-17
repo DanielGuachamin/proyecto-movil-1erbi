@@ -54,9 +54,9 @@ export class ServGeoService {
     lugarTuris: IngresatlugaresTuristicos
   ) {
     if(imagenes.length==0){
-      alert('error no hay imagen')
+      alert('Debe registrar una imagen del sitio');
     }else{
-      alert('imagen esta bien')
+      alert('Imagen cargada exitosamente');
     }
     const storage = getStorage();
     for (const item of imagenes) {
@@ -73,7 +73,8 @@ export class ServGeoService {
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         },
         (error) => {
-          alert('error_imagen');
+          console.log(error);
+          alert('Error al cargar la imagen');
         },
         () => {
           //obtener la url
@@ -92,7 +93,7 @@ export class ServGeoService {
               Nombre: lugarTuris.Nombre,
               Propietario: lugarTuris.Propietario,
             });
-            alert('imagen'+ item.url);
+  
           });
         }
       );
@@ -133,8 +134,8 @@ export class ServGeoService {
           Longitud: this.longitud,
         });
     } catch (error) {
-      alert('error al guadar imagen' + error);
-      alert('Error algo va con la imagen');
+      console.log("Error al guardar la imagen",error);
+      alert('Error al guadar imagen');
     }
   }
 }

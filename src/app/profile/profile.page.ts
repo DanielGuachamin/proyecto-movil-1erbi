@@ -34,7 +34,7 @@ export class ProfilePage implements OnInit {
     this.profileForm = new FormGroup({
       mail: new FormControl(''),
       name: new FormControl(''),
-      imageURL: new FormControl('http://www.4x4.ec/overlandecuador/wp-content/uploads/2017/06/default-user-icon-8.jpg'),
+      imageURL: new FormControl('https://firebasestorage.googleapis.com/v0/b/ionicimagen-358b2.appspot.com/o/profileImage.jpeg?alt=media&token=453d3b39-836b-43aa-a6f6-c6aab93eed6b'),
       rol: new FormControl(''),
       image_reference: new FormControl(''),
       uid: new FormControl(''),

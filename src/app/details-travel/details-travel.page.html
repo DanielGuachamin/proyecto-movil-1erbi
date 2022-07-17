@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-title>Detalles de Lugares Turisticos</ion-title>
     <br>
-    <ion-button expand='block' (click)="returnToShow()" [routerLink]="['/Lugares-Turisticos-Ecuador']">Regresar</ion-button>
+    <ion-button expand='block' (click)="returnToShow()">Regresar</ion-button>
   </ion-toolbar>
 </ion-header>
 
@@ -47,8 +47,8 @@
 
         </div>
       </ion-accordion>
-      
-      
+
+
       <!-- <ion-accordion value="fiveth">
         <ion-item slot="header" color="light">
           <ion-label (click)="showLoading(this.lat,this.long)">Direccion en Google</ion-label>
@@ -60,9 +60,10 @@
         </ion-accordion> -->
     </ion-accordion-group>
     <div class="ion-padding" slot="content">
-      <a target="_blank" href="https://www.google.es/maps?q={{this.lat}},{{this.long}}">Ve a la ubicación deseada en google</a>
+      <a target="_blank" href="https://www.google.es/maps?q={{this.lat}},{{this.long}}">Ve a la ubicación deseada en
+        google</a>
       <br>
-      <div id="map" >
+      <div id="map">
 
       </div>
     </div>

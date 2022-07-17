@@ -1,27 +1,31 @@
-<ion-header>
+<ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-title>Gestiona los lugares que se muestran en tu aplicación</ion-title>
+    <ion-title id="headerTitle">Gestiona los <br>sitios turísiticos</ion-title>
+    <ion-button color="primary" [routerLink]="['/profile',uidUser]" slot="start" fill="clear">
+      <ion-icon name="person-circle-outline"></ion-icon>
+    </ion-button>
+
+    <ion-button (click)='logout()' color="danger" [routerLink]="['/login']" slot="end" fill="clear">
+      <ion-icon name="log-out-outline"></ion-icon>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-card *ngFor=" let lugares of todosloslugaresTuristicos">
     <ion-card-header>
-      <h3>{{lugares.Lugar}}-Ecuador</h3>
-      <ion-avatar class="avatar">
-        <img  [src]="lugares.Imagen"  />
-       
+      <ion-avatar class="avatar" expand="block">
+        <img [src]="lugares.Imagen" />
+
       </ion-avatar>
-      <ion-card-title>{{lugares.Nombre}}</ion-card-title>
     </ion-card-header>
-    <ion-button color="danger" fill="outline" size="small"  class="button" (click)="eliminarLugar(lugares)" >Eliminar Sitio Turistico
+    <ion-card-content>
+      <ion-card-title>{{lugares.Nombre}}</ion-card-title>
+      <h4>{{lugares.Lugar}}-Ecuador</h4>
+
+    </ion-card-content>
+    <ion-button color="danger" fill="outline" size="small" class="button" expand="block" (click)="eliminarLugar(lugares)">Eliminar
+      Sitio Turistico
     </ion-button>
   </ion-card>
 </ion-content>
-
-<ion-footer>
-  
-    <ion-button (click)='logout()' color="danger" [routerLink]="['/login']">Cerrar Sesión</ion-button>
-    <ion-button  color="secondary" [routerLink]="['/profile',uidUser]">Ver Perfil</ion-button>
-  
-</ion-footer>

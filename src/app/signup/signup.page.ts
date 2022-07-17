@@ -13,7 +13,7 @@ export class SignupPage implements OnInit {
   public password: any;
   public name: any;
   public imageURL: string =
-    'http://www.4x4.ec/overlandecuador/wp-content/uploads/2017/06/default-user-icon-8.jpg';
+    'https://firebasestorage.googleapis.com/v0/b/ionicimagen-358b2.appspot.com/o/profileImage.jpeg?alt=media&token=453d3b39-836b-43aa-a6f6-c6aab93eed6b';
   public rol: string = '';
   public image_reference: string = '';
   public registerForm: FormGroup;
@@ -38,7 +38,7 @@ export class SignupPage implements OnInit {
       password: [''],
       name: [''],
       imageURL: [
-        'http://www.4x4.ec/overlandecuador/wp-content/uploads/2017/06/default-user-icon-8.jpg',
+        'https://firebasestorage.googleapis.com/v0/b/ionicimagen-358b2.appspot.com/o/profileImage.jpeg?alt=media&token=453d3b39-836b-43aa-a6f6-c6aab93eed6b',
       ],
       rol: [''],
       image_reference: [''],

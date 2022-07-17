@@ -12,6 +12,8 @@ declare var google;
 })
 export class DetailsTravelPage implements OnInit {
   todosloslugaresTuristicos: LugaresTuristicos[];
+  public uid:any;
+  public rol:any;
   public datos_turisticos: any;
   public datallesForm: FormGroup;
   public url: any;
@@ -41,7 +43,10 @@ export class DetailsTravelPage implements OnInit {
   }
 
   ngOnInit() {
-    
+    const uid = localStorage.getItem("idUser")
+    this.uid = uid
+    const rol = localStorage.getItem("rolUser")
+    this.rol = rol
     const id2 = this.activeRoute.snapshot.paramMap.get('id');
     this.detallesServi.DetallesLugaresTurisicos(id2).subscribe((res) => {
       // laimagen
@@ -68,11 +73,30 @@ export class DetailsTravelPage implements OnInit {
     });
   }
 
-  returnToShow() {
+  
+  returnToShow(){
     this.lat = null;
     this.long = null;
+    const rol = this.rol
+    switch(rol) { 
+      case "turista": { 
+        this.router.navigate(['/turista', localStorage.getItem("idUser")])
+         break; 
+      } 
+      case "encargado": { 
+        this.router.navigate(['/encargado', localStorage.getItem("idUser")])
+         break; 
+      } 
+      case "administrador": { 
+        this.router.navigate(['/admin', localStorage.getItem("idUser")])
+        break; 
+     }
+      default: { 
+         alert("revisa que el usuario tenga rol")
+         break; 
+      } 
+   }
   }
-
   async showLoading(uno, dos) {
     const loading = await this.loadingCtrl.create({
       message: 'Estamos cargando la información para ti...',

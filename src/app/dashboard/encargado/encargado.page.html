@@ -1,32 +1,37 @@
-<ion-header>
+<ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-title>Gestiona tus lugares turísticos</ion-title>
-    <br>
-    <br>
-    <br>
-    <ion-button color="primary" fill="outline" size="small"  class="button" [routerLink]="['/geolocalizacion']">Crear nuevos Lugares Turisticos
+    <ion-title id="headerTitle">Gestiona tus <br>lugares turísticos</ion-title>
+    <ion-button color="primary" [routerLink]="['/profile',uidUser]" slot="start" fill="clear">
+      <ion-icon name="person-circle-outline"></ion-icon>
     </ion-button>
+
+    <ion-button (click)='logout()' color="danger" [routerLink]="['/login']" slot="end" fill="clear">
+      <ion-icon name="log-out-outline"></ion-icon>
+    </ion-button>
+    
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-card *ngFor=" let lugares of todosloslugaresTuristicos">
     <ion-card-header>
-      <h3>{{lugares.Lugar}}-Ecuador</h3>
       <ion-avatar class="avatar">
-        <img  [src]="lugares.Imagen"  />
-       
+        <img [src]="lugares.Imagen" />
+        
       </ion-avatar>
-      <ion-card-title>{{lugares.Nombre}}</ion-card-title>
     </ion-card-header>
-    <ion-button color="primary" fill="outline" size="small"  class="button" routerLink="/detalles-Lugares-Turisticos/{{lugares.id}}">Detalles
+    <ion-card-content>
+      <ion-card-title>{{lugares.Nombre}}</ion-card-title>
+      <h3>{{lugares.Lugar}}-Ecuador</h3>
+
+    </ion-card-content>
+    <ion-button color="primary" fill="outline" size="small" class="button" expand="block"
+      routerLink="/detalles-Lugares-Turisticos/{{lugares.id}}">Detalles
     </ion-button>
   </ion-card>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button [routerLink]="['/geolocalizacion']">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
-
-<ion-footer>
-    <ion-button (click)='logout()' color="danger" [routerLink]="['/login']">Cerrar Sesión</ion-button>
-    <ion-button  color="secondary" [routerLink]="['/profile',uidUser]">Ver Perfil</ion-button>
- 
-</ion-footer>
-
