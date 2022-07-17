@@ -1,12 +1,8 @@
-
-
 <ion-content>
   <app-show-travel></app-show-travel>
 </ion-content>
 
 <ion-footer>
-  <ion-buttons>
-    <ion-button (click)='logout()' expand='block' [routerLink]="['/login']">Cerrar Sesión</ion-button>
-    <ion-button  expand='block' [routerLink]="['/profile']">Modificar Perfil</ion-button>
-  </ion-buttons>
+  <ion-button (click)='logout()' color="danger" [routerLink]="['/login']">Cerrar Sesión</ion-button>
+  <ion-button color="secondary" [routerLink]="['/profile',uidUser]">Ver Perfil</ion-button>
 </ion-footer>

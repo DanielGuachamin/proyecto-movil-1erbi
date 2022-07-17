@@ -12,6 +12,7 @@ import { EncargadoService } from './encargado.service';
 export class EncargadoPage implements OnInit {
 
   todosloslugaresTuristicos:LugaresTuristicos[];
+  uidUser:string;
 
   constructor(
     public fireService: FireserviceService,
@@ -29,6 +30,7 @@ export class EncargadoPage implements OnInit {
       });
       console.log(this.todosloslugaresTuristicos);
     });
+    this.uidUser = localStorage.getItem('idUser')
   }
 
   // toggleMenu() {

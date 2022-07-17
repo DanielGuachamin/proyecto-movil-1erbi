@@ -6,7 +6,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { ShowTravelPageRoutingModule } from './show-travel-routing.module';
 
-import { ShowTravelPage } from './show-travel.page';
+// import { ShowTravelPage } from './show-travel.page';
 
 @NgModule({
   imports: [
@@ -16,6 +16,6 @@ import { ShowTravelPage } from './show-travel.page';
     ShowTravelPageRoutingModule,
     
   ],
-  declarations: [ShowTravelPage]
+  declarations: []
 })
 export class ShowTravelPageModule {}

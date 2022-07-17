@@ -40,6 +40,7 @@ export class LoginPage implements OnInit {
           console.log(res);
           this.usuario= res;
           localStorage.setItem("idUser", this.usuario.uid);
+          localStorage.setItem("rolUser", this.usuario.rol);
           this.var = localStorage.getItem("idUser");
           console.log('en storage: ', this.usuario.rol)
           //alert('Welcome '+ res['name']);

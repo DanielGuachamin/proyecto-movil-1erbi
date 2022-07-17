@@ -9,13 +9,16 @@ import { FireserviceService } from 'src/app/services/fireservice.service';
   styleUrls: ['./turista.page.scss'],
 })
 export class TuristaPage implements OnInit {
+  uidUser:string;
   constructor(
     public fireService: FireserviceService,
     public router: Router,
     // private menuController: MenuController
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.uidUser = localStorage.getItem('idUser')
+  }
 
   
   logout() {

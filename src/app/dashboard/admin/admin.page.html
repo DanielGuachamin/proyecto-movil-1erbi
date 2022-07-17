@@ -1,25 +1,27 @@
-<app-menu>
-  
-</app-menu>
 <ion-header>
   <ion-toolbar>
-    <ion-buttons>
-      <ion-menu-button color="primary" menu="first">
-
-      </ion-menu-button>
-    </ion-buttons>
-    <ion-title>
-      Vista de Admin
-    </ion-title>
+    <ion-title>Gestiona los lugares que se muestran en tu aplicación</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  
+  <ion-card *ngFor=" let lugares of todosloslugaresTuristicos">
+    <ion-card-header>
+      <h3>{{lugares.Lugar}}-Ecuador</h3>
+      <ion-avatar class="avatar">
+        <img  [src]="lugares.Imagen"  />
+       
+      </ion-avatar>
+      <ion-card-title>{{lugares.Nombre}}</ion-card-title>
+    </ion-card-header>
+    <ion-button color="danger" fill="outline" size="small"  class="button" (click)="eliminarLugar(lugares)" >Eliminar Sitio Turistico
+    </ion-button>
+  </ion-card>
 </ion-content>
+
 <ion-footer>
-  <ion-buttons>
-    <ion-button (click)='logout()' expand='block'>Cerrar Sesión</ion-button>
-    <ion-button  expand='block' [routerLink]="['/profile']">Modificar Perfil</ion-button>
-  </ion-buttons>
+  
+    <ion-button (click)='logout()' color="danger" [routerLink]="['/login']">Cerrar Sesión</ion-button>
+    <ion-button  color="secondary" [routerLink]="['/profile',uidUser]">Ver Perfil</ion-button>
+  
 </ion-footer>

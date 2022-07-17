@@ -16,6 +16,12 @@ export class ProfilePage implements OnInit {
   profileForm: FormGroup;
   selectedFile: any = null;
   urlProfilePic: string = '';
+  public usuario:any;
+  public rol:string;
+  public mail:string;
+  public name:string;
+  public urlImg:string;
+  public uid:string;
 
   constructor(
     public formBuilder: FormBuilder,
@@ -36,8 +42,20 @@ export class ProfilePage implements OnInit {
 
 
   ngOnInit() {
-    
+    const uid = localStorage.getItem("idUser")
+    this.uid = uid
+    this.fireService.getUserInfo(uid).subscribe(response => {
+      console.log('res: ', response);
+      this.usuario = response
+      console.log('res: ', this.usuario);
+      this.name = this.usuario.name;
+      this.rol = this.usuario.rol;
+      this.mail = this.usuario.mail;
+      this.urlImg = this.usuario.imageURL
+    })
   }
+
+
 
   modifiedProfile(){
 

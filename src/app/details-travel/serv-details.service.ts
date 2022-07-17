@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { LugaresTuristicos } from '../show-travel/lugaresTuristicos.modal';
-import { DetailsTravelPageModule } from './details-travel.module';
 
 @Injectable({
   providedIn: 'root'

@@ -1,5 +1,8 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
+    <ion-title>
+      Perfil
+    </ion-title>
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
@@ -9,17 +12,31 @@
 <ion-content class="ion-padding">
   <div class="background-image"></div>
 
-  <div id="header">
-    <h1 id="name">Modifica tu perfil</h1>
-  </div>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Rol: {{rol}}</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <div class="image">
 
-  <form [formGroup]="profileForm" (ngSubmit)="modifiedProfile()" novalidate>
+        <ion-img [src]="urlImg" ></ion-img>
+      </div>
+      <br>
+      Usuario: {{name}}
+      <br>
+      Correo: {{mail}}
+    </ion-card-content>
+    <ion-button expand='block' color="secondary" [routerLink]="['/useredit',uid]">Modificar perfil</ion-button>
+  </ion-card>
+
+  <!-- <form [formGroup]="profileForm" (ngSubmit)="modifiedProfile()" novalidate>
     <ion-item>
       <ion-label position="stacked">Name</ion-label>
       <ion-input formControlName="name" type="text" class="form-control"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="stacked">Email</ion-label>
+      <ion-label position="stacked" disabled>Email</ion-label>
       <ion-input formControlName="mail" type="email" class="form-control"></ion-input>
     </ion-item>
     <ion-item>
@@ -28,11 +45,7 @@
     </ion-item>
   
 
-    <!-- <ion-item *ngFor="let name of people; let i=index">
-      <ion-label (ionSelect)="setPerson($event)">{{name.name}}</ion-label>
-      <ion-radio (ionSelect)="setPerson($event)" value="{{name.value}}">
-      </ion-radio>
-    </ion-item> -->
+
     <ion-button expand='block' color="secondary">Modificar perfil</ion-button>
-  </form>
+  </form> -->
 </ion-content>

@@ -1,0 +1,22 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>
+      Modificar Perfil
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <form [formGroup]="profileForm" (ngSubmit)="modifiedProfile()" novalidate>
+    <ion-item>
+      <ion-label position="stacked">Name</ion-label>
+      <ion-input formControlName="name" type="text" class="form-control"></ion-input>
+    </ion-item>
+  
+    <ion-button expand='block' color="secondary">Guardar</ion-button>
+  </form>
+</ion-content>

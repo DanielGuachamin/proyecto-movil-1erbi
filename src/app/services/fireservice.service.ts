@@ -31,6 +31,32 @@ export class FireserviceService {
     return this.firestore.collection("users").doc(data.uid).valueChanges();
   }
 
+  getUserInfo(uid) {
+    return this.firestore.collection("users").doc(uid).valueChanges();
+  }
+
+  updateProfile(name:string) {
+    const uid = localStorage.getItem('userId')
+    return this.firestore.collection("users").doc(uid).update({
+      name: name
+    });
+  }
+
+  // updateUser(object: any, url: any, path: any, id: any){
+    
+  //   return this.firestore.collection("users")
+  //   //crea segun la id registrada en direauthentication
+  //   .doc(id)
+  //     //actualización de los siguientes campos de la canción
+  //     .update({
+  //       name: object.name,
+  //       imageURL : url,
+  //       image_reference: path
+  //   })
+    
+
+  // }
+
   logout(){
     this.auth.signOut().then(()=>{
       //deshabilitar el token
